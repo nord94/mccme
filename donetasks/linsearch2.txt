@@ -1,5 +1,3 @@
-package searchandsort.linsort.task02;
-
 import java.util.Scanner;
 
 public class LinSearch2 {
