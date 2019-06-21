@@ -7,7 +7,7 @@ public class MaxNum {
 
     static int maxElementSearch(int[] a) {
         int max;
-        max = 0;
+        max = a[0];
         for (int i = 0; i < a.length; i++) {
             if (max < a[i]) max = a[i];
         }
