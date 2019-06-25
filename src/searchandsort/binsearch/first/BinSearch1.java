@@ -13,17 +13,16 @@ public class BinSearch1 {
         return array;
     }
 
-    static int binSearch(int[] array, int index) {
+    static int binSearch(int[] array, int element) {
         int left;
         int right;
         int middle;
 
         left = 0;
-        right = array.length;
-
+        right = array.length - 1;
         while (left < right) {
             middle = (left + right) / 2;
-            if (array[middle] - index < 0) left = middle + 1;
+            if (array[middle] - element < 0) left = middle + 1;
             else right = middle;
         }
         return right;
@@ -43,17 +42,18 @@ public class BinSearch1 {
         k = input.nextInt();
         firstArray = readValues(n);
         secondArray = readValues(k);
-        rightClosest = 0;
-        leftClosest = 0;
         for (int i = 0; i < secondArray.length; i++) {
             rightClosest = binSearch(firstArray, secondArray[i]);
-            leftClosest = rightClosest - 1;
-            rightDiff = Math.abs(secondArray[i] - firstArray[rightClosest]);
-            if (rightClosest > 0) leftDiff = Math.abs(secondArray[i] - firstArray[leftClosest]);
-            else leftDiff = -1;
-            if (leftDiff == rightDiff) {
-                System.out.println(firstArray[leftClosest]);
-            } else System.out.println(firstArray[rightClosest]);
+            if (rightClosest > 0) {
+                leftClosest = rightClosest - 1;
+                rightDiff = firstArray[rightClosest] - secondArray[i];
+                leftDiff = secondArray[i] - firstArray[leftClosest];
+                if (leftDiff == rightDiff) {
+                    System.out.println(firstArray[leftClosest]);
+                    continue;
+                }
+            }
+            System.out.println(firstArray[rightClosest]);
         }
     }
 }
