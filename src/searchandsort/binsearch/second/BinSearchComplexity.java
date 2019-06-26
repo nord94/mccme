@@ -8,16 +8,12 @@ public class BinSearchComplexity {
 
     public static void main(String[] args) {
         int number;
-        int right;
-        int remainder;
+        double calculatedNumber;
+        int n;
 
-        right = input.nextInt();
-        remainder = right % 2 == 0 ? 0 : 1;
-        number = 0;
-        while (right > 1) {
-            right /= 2;
-            number++;
-        }
-        System.out.println(number + remainder);
+        number = input.nextInt();
+        n = 1;
+        while (Math.pow(2, n) < number) n++;
+        System.out.println(n);
     }
 }
